@@ -1,0 +1,60 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+<h3>
+    {{title}}
+</h3>
+  <img width="50" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<br />
+<br />
+</div>
+<p-table #dt1 [columns]="cols" [value]="data" [reorderableColumns]="true" [responsive]="true" selectionMode="multiple" [(selection)]="selectedData"
+  exportFilename={{fileName}}>
+  <ng-template pTemplate="caption">
+    Select the CSV Folder
+    <input type="file" class="upload" (change)="changeListener($event)" class="ui-button-info" webkitdirectory>
+
+    <div class="ui-helper-clearfix">
+      <button type="button" pButton icon="fa-file-o" iconPos="left" label="All Data" (click)="dt1.exportCSV()" style="float:left"></button>
+      <button type="button" pButton icon="fa-file" iconPos="left" label="Selection Only" (click)="dt1.exportCSV({selectionOnly:true})"
+        style="float:right"></button>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th style="width:2em"></th>
+      <th *ngFor="let col of columns" pReorderableColumn>
+        {{col.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data let-columns="columns" let-index="rowIndex">
+    <tr [pSelectableRow]="data" [pReorderableRow]="index">
+      <td>
+        <i class="fa fa-bars" pReorderableRowHandle></i>
+      </td>
+      <td *ngFor="let col of cols;let i=index" pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input type="text" [(ngModel)]="data[col.header]">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{data[col?.header]}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<div>
+    Known issue:
+    <br/>The view is rendered first then the file data is processed hence the view is not correct ,
+    But if you check the console.log the all the file data is there <br/> If you install the project and run it in the local with breakpoint then you will be able to see full functionality
+    
+    <br/><br/>Features:<br/>
+    1.Editable row <br/>
+    2.Re order the rows within the csv <br />
+    3.Re order the coloumns<br/>
+    4.Export all the data as a csv file<br/>
+    5.Export selected data as a csv file<br/>
+    6.Responsive Table<br/>
+</div>
