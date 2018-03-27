@@ -38,17 +38,17 @@ export class AppComponent {
   public changeListener(event: any) {
     let self = this;
     this.data = [];
-    for (var i = 0; i < event.target.files.length; i++) {
-      this.fileName = event.target.files[i].name.split(".")[0];
+    //for (var i = 0; i < event.target.files.length; i++) {
+      this.fileName = event.target.files[0].name.split(".")[0];
       {
-        let file: File = event.target.files.item(i);
+        let file: File = event.target.files.item(0);
         let reader: FileReader = new FileReader();
         reader.onloadend = function (event) {
           self.parseCSVFile(reader.result);
         }
         reader.readAsText(file);
       }
-    }
+    
     console.log("All files data", this.data);
     this.fillTheColumnHeader();
   }

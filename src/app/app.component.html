@@ -11,7 +11,7 @@
   exportFilename={{fileName}}>
   <ng-template pTemplate="caption">
     Select the CSV Folder
-    <input type="file" class="upload" (change)="changeListener($event)" class="ui-button-info" webkitdirectory>
+    <input type="file" class="upload" (change)="changeListener($event)" class="ui-button-info" >
 
     <div class="ui-helper-clearfix">
       <button type="button" pButton icon="fa-file-o" iconPos="left" label="All Data" (click)="dt1.exportCSV()" style="float:left"></button>
@@ -48,7 +48,7 @@
 <div>
     Known issue:
     <br/>The view is rendered first then the file data is processed hence the view is not correct ,
-    But if you check the console.log the all the file data is there <br/> If you install the project and run it in the local with breakpoint then you will be able to see full functionality
+    But if you check the console.log or if you export it(ALL data button) then all the file data is there <br/> If you install the project and run it in the local with breakpoint then you will be able to see full functionality
     
     <br/><br/>Features:<br/>
     1.Editable row <br/>
