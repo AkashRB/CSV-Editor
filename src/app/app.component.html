@@ -7,11 +7,11 @@
 <br />
 <br />
 </div>
-<p-table #dt1 [columns]="cols" [value]="data" [reorderableColumns]="true" [responsive]="true" selectionMode="multiple" [(selection)]="selectedData"
-  exportFilename={{fileName}}>
+<p-table #dt1 [columns]="cols" [value]="data" [reorderableColumns]="true" [responsive]="true" selectionMode="multiple" [(selection)]="selectedData" 
+  exportFilename={{fileName}} >
   <ng-template pTemplate="caption">
     Select the CSV Folder
-    <input type="file" class="upload" (change)="changeListener($event)" class="ui-button-info" >
+    <input type="file" class="upload" (change)="changeListener($event)" class="ui-button-info" webKitDirectory>
 
     <div class="ui-helper-clearfix">
       <button type="button" pButton icon="fa-file-o" iconPos="left" label="All Data" (click)="dt1.exportCSV()" style="float:left"></button>
@@ -32,7 +32,7 @@
       <td>
         <i class="fa fa-bars" pReorderableRowHandle></i>
       </td>
-      <td *ngFor="let col of cols;let i=index" pEditableColumn>
+      <td *ngFor="let col of cols;let i=index " pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input type="text" [(ngModel)]="data[col.header]">
@@ -46,17 +46,11 @@
   </ng-template>
 </p-table>
 <div>
-    This is file upload not a folder upload to show you the features.
-    First time the data will not be uploaded so upload the second time to see the features
-    Known issue:
-    <br/>The view is rendered first then the file data is processed hence the view is not correct ,
-    But if you check the console.log or if you export it(ALL data button) then all the file data is there <br/> If you install the project and run it in the local with breakpoint then you will be able to see full functionality
-    
-    <br/><br/>Features:<br/>
-    1.Editable row <br/>
-    2.Re order the rows within the csv <br />
-    3.Re order the coloumns<br/>
-    4.Export all the data as a csv file<br/>
-    5.Export selected data as a csv file<br/>
-    6.Responsive Table<br/>
+  <br/><br/>Features:<br/>
+  1.Editable row <br/>
+  2.Re order the rows within the csv <br />
+  3.Re order the coloumns<br/>
+  4.Export all the data as a csv file<br/>
+  5.Export selected data as a csv file<br/>
+  6.Responsive Table<br/>
 </div>
