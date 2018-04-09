@@ -6,10 +6,11 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build --prod",
-    "start": "ng serve",
+    "start": "node server.js",
     "test": "ng test",
     "lint": "tslint ./src/**/*.ts -t verbose",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
   },
   "keywords": [],
   "author": "",
@@ -30,10 +31,12 @@
     "@swimlane/ngx-datatable": "^11.2.0",
     "angular-in-memory-web-api": "~0.5.0",
     "core-js": "^2.4.1",
+    "express": "^4.16.3",
+    "font-awesome": "^4.7.0",
     "ngx-papaparse": "^1.2.5",
     "primeng": "^5.2.3",
-    "font-awesome": "^4.7.0",
     "rxjs": "^5.5.0",
+    "typescript": "2.4.2",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
@@ -56,6 +59,10 @@
     "ts-node": "^3.3.0",
     "tslint": "^3.15.1",
     "typescript": "2.4.2"
+  },
+  "engines": {
+    "node": "v8.9.4",
+    "npm": "5.8.0"
   },
   "repository": {}
 }
